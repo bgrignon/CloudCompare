@@ -1,3 +1,5 @@
+add_subdirectory( qAnnotationTool )
+add_subdirectory( qFileScroller )
 add_subdirectory( qAnimation )
 add_subdirectory( qBroom )
 add_subdirectory( qCanupo )

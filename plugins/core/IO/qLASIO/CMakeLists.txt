@@ -16,6 +16,38 @@ if (PLUGIN_IO_QLAS)
     add_subdirectory(src)
     add_subdirectory(ui)
 
+    #####################################################################################
+    # Generating an export header for the symbols from qLAS used by qAnnotationTool and 
+    # qFileScroller.
+    # Modification of the CMakeLists.txt and relevant code modification made by Baptiste
+    # Grignon, 2025. Original license (GPLv2) apply.
+
+    include(GenerateExportHeader)
+
+    generate_export_header(${PROJECT_NAME}
+        EXPORT_FILE_NAME ${CMAKE_CURRENT_BINARY_DIR}/exports/QLasExport.h
+        EXPORT_MACRO_NAME QLAS_IO_PLUGIN_API
+    )
+
+    target_sources(${PROJECT_NAME}
+        PRIVATE
+            ${CMAKE_CURRENT_BINARY_DIR}/exports/QLasExport.h
+    )
+
+    #install(
+    #    FILES
+    #        ${CMAKE_CURRENT_BINARY_DIR}/exports/QLasExport.h
+    #    DESTINATION
+    #        include/${PROJECT_NAME}
+    #)
+
+    target_include_directories(${PROJECT_NAME}
+        PUBLIC
+            $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/exports>
+            #$<INSTALL_INTERFACE:include/${PROJECT_NAME}>
+    )
+    #####################################################################################
+
     if (WIN32)
         copy_files( "${LASZIP_DLL}" "${CLOUDCOMPARE_DEST_FOLDER}" 1 )
         if (${OPTION_BUILD_CCVIEWER})

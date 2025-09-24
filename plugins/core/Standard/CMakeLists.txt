@@ -1,5 +1,3 @@
-add_subdirectory( qAnnotationTool )
-add_subdirectory( qFileScroller )
 add_subdirectory( qAnimation )
 add_subdirectory( qBroom )
 add_subdirectory( qCanupo )
@@ -17,6 +15,7 @@ add_subdirectory( qPoissonRecon )
 add_subdirectory( qRANSAC_SD )
 add_subdirectory( qSRA )
 add_subdirectory( qMeshBoolean )
+add_subdirectory( plugins-cloudcompare )
 
 #plugins integrated as submodules
 set( submod_plugins

@@ -16,6 +16,7 @@ add_subdirectory( qRANSAC_SD )
 add_subdirectory( qSRA )
 add_subdirectory( qMeshBoolean )
 add_subdirectory( plugins-cloudcompare )
+add_subdirectory( qAnchorPicker )
 
 #plugins integrated as submodules
 set( submod_plugins
